@@ -6,35 +6,48 @@ PC
 Anaconda - Python 3.7
 ## ALGORITHM: 
 ### Step 1:
-Mount your colab with your drive
+Import the sys module.
 ### Step 2:
-Open your text file in python code runner.
+Define a function get_word_count(file_path) to calculate the word count in the file.
 ### Step 3:
-Read the file and split the words separately using split().
+Check if the script is being run as the main program
 ### Step 4:
-Count the number of words in text file using for() loop.
+Check if the correct number of command-line arguments (i.e., 2) is provided.
 ### Step 5:
+Get the file path from the command-line argument
+### Step 6:
+Print the word count if it is not None.
+### Step 7:
 End the program
 ## PROGRAM:
-```python
-#Program to for getting the word count from a text.
-#Developed by:Manogaran s
-#Register Number:23004448
-from google.colab import drive
-drive.mount('/content/drive')
-
-f=open('mano.txt','r')
-b=f.read()
-d=0
-c=b.split(' ')
-for i in c:
-  d=d+1
-print('The number of words:',d)
+```python 
+''' Program for getting the word count using command line arguments.
+Developed by:Manogaran S
+Register number: 23004448'''
+import sys
+def get_word_count(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            word_count = len(content.split())
+            return word_count
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        return None
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python word_count.py <file_path>")
+        sys.exit(1)
+    file_path = sys.argv[1]
+    word_count = get_word_count(file_path)
+    if word_count is not None:
+        print(f"Word count in '{file_path}': {word_count}")
 ```
 ### OUTPUT:
-![output](/word%20count.png)
-![output](/word%20count%20text.png)
-
+![output](/count%201.jpeg)
+![output](/count%202.jpeg)
+![output](/count%203.jpeg)
+![output](/count%204.jpeg)
 
 
 ## RESULT:
